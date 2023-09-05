@@ -1,11 +1,11 @@
 package com.br.authentication.jwt.repository;
 
-import com.br.authentication.jwt.domain.User;
+import com.br.authentication.jwt.domain.UserEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface UserRepository extends JpaRepository<User, Integer> {
+public interface UserRepository extends JpaRepository<UserEntity, Integer> {
 
-    User findByUsername(String username);
+
 }
