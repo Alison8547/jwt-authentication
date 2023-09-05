@@ -1,9 +1,11 @@
 package com.br.authentication.jwt.dto;
 
-import com.br.authentication.jwt.domain.CargoEntity;
 import lombok.*;
 
-import java.util.Set;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import java.util.List;
 
 @Getter
 @Setter
@@ -12,7 +14,13 @@ import java.util.Set;
 @Builder
 public class UserRequest {
 
-    private String login;
-    private String senha;
-    private Set<CargoEntity> cargos;
+    @NotBlank
+    @Email
+    private String email;
+
+    @NotBlank
+    private String password;
+
+    @NotNull
+    private List<Integer> cargos;
 }

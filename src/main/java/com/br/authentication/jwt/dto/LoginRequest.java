@@ -2,14 +2,18 @@ package com.br.authentication.jwt.dto;
 
 import lombok.*;
 
+import javax.validation.constraints.NotBlank;
+
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class UserResponse {
+public class LoginRequest {
 
-    private Integer idUser;
+    @NotBlank
     private String email;
-    private Integer active;
+
+    @NotBlank
+    private String password;
 }

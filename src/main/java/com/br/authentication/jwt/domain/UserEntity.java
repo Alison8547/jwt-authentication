@@ -1,8 +1,7 @@
 package com.br.authentication.jwt.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -12,21 +11,24 @@ import java.util.Set;
 
 @Getter
 @Setter
-@Entity(name = "user")
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+@Entity(name = "user_auth")
 public class UserEntity implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_user")
     private Integer idUser;
 
-    @Column(name = "login")
-    private String login;
+    @Column(name = "email", unique = true)
+    private String email;
 
-    @Column(name = "senha")
-    private String senha;
+    @Column(name = "password")
+    private String password;
 
-    @Column(name = "ativo")
-    private Integer ativo;
+    @Column(name = "active")
+    private Integer active;
 
     @JsonIgnore
     @ManyToMany(fetch = FetchType.LAZY)
@@ -44,12 +46,12 @@ public class UserEntity implements UserDetails {
 
     @Override
     public String getPassword() {
-        return senha;
+        return password;
     }
 
     @Override
     public String getUsername() {
-        return login;
+        return email;
     }
 
     @Override
@@ -69,6 +71,6 @@ public class UserEntity implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return ativo == 1;
+        return active == 1;
     }
 }
