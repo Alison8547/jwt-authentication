@@ -1,9 +1,9 @@
 package com.br.authentication.jwt.dto;
 
+import com.br.authentication.jwt.domain.CargoEntity;
 import lombok.*;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -12,8 +12,7 @@ import java.util.List;
 @Builder
 public class UserRequest {
 
-    private String name;
-    private String username;
-    private String password;
-    private List<String> roles = new ArrayList<>();
+    private String login;
+    private String senha;
+    private Set<CargoEntity> cargos;
 }

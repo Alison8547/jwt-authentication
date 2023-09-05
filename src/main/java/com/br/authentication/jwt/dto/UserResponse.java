@@ -2,9 +2,6 @@ package com.br.authentication.jwt.dto;
 
 import lombok.*;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @Getter
 @Setter
 @NoArgsConstructor
@@ -12,8 +9,6 @@ import java.util.List;
 @Builder
 public class UserResponse {
 
-    private Integer id;
-    private String name;
-    private String username;
-    private List<String> roles = new ArrayList<>();
+    private Integer idUser;
+    private String login;
 }
