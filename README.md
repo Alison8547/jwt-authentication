@@ -54,7 +54,7 @@ Na lista de cargos podendo ser 1 para User e 2 para Admin, e é claro pudendo co
 ```
 
 * **POST**<br />
-  Autenticar um usuário http://localhost:8080/create-user <br />Exemplo payload
+  Autenticar um usuário http://localhost:8080/auth <br />Exemplo payload
 ```
 {
     "email": "alison@hotmail.com",
