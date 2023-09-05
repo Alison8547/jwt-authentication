@@ -32,6 +32,7 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests((authz) ->
                         authz.antMatchers("/auth", "/create-user").permitAll()
                                 .antMatchers(HttpMethod.PUT,"/disabled-user/**").hasRole("ADMIN")
+                                .antMatchers(HttpMethod.GET,"/list-user-disabled").hasRole("ADMIN")
                                 .anyRequest().authenticated()
                 );
         http.addFilterBefore(new TokenAuthenticationFilter(tokenService), UsernamePasswordAuthenticationFilter.class);

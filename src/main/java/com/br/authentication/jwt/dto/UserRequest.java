@@ -1,6 +1,5 @@
 package com.br.authentication.jwt.dto;
 
-import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.*;
 
@@ -19,16 +18,15 @@ public class UserRequest {
 
     @NotBlank
     @Email
-    @Schema(description = "your email account",example = "alison@hotmail.com")
+    @Schema(description = "your email account", example = "alison@hotmail.com")
     private String email;
 
     @NotBlank
-    @Schema(description = "your password account",example = "123")
+    @Schema(description = "your password account", example = "123")
     private String password;
 
     @NotNull
     @NotEmpty
-    @Schema(description = "your list cargos of account")
-    @ArraySchema(arraySchema = @Schema(example = "[1,2]"))
+    @Schema(description = "your list cargos of account", example = "[1]")
     private List<Integer> cargos;
 }

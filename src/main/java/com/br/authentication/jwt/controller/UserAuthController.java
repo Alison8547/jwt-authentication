@@ -77,7 +77,7 @@ public class UserAuthController {
                     @ApiResponse(responseCode = "500", description = "An exception was generated")
             }
     )
-    @GetMapping("/user-disabled")
+    @GetMapping("/list-user-disabled")
     public ResponseEntity<List<UserResponse>> listUserDisabled() {
         return new ResponseEntity<>(userService.listUserDisabled(), HttpStatus.OK);
     }
