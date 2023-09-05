@@ -40,10 +40,23 @@ public class UserService {
         return mapper.toUserResponse(userEntity);
     }
 
+    public UserResponse disabledUser(Integer idUser) {
+        UserEntity userEntity = findIdUser(idUser);
+        userEntity.setActive(USER_DISABLED);
+        userRepository.save(userEntity);
+
+        return mapper.toUserResponse(userEntity);
+    }
+
 
     public UserEntity findUserEmail(String email) {
         return userRepository.findByEmail(email)
                 .orElseThrow(() -> new BusinessException("Email not found!"));
+    }
+
+    public UserEntity findIdUser(Integer idUser) {
+        return userRepository.findById(idUser)
+                .orElseThrow(() -> new BusinessException("Not found User!"));
     }
 
 }

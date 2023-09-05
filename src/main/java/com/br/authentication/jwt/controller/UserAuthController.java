@@ -9,9 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -33,5 +31,10 @@ public class UserAuthController {
     @PostMapping("/create-user")
     public ResponseEntity<UserResponse> createUser(@Valid @RequestBody UserRequest userRequest) {
         return new ResponseEntity<>(userService.createUser(userRequest), HttpStatus.CREATED);
+    }
+
+    @PutMapping("/disabled-user/{idUser}")
+    public ResponseEntity<UserResponse> disabledUser(@PathVariable Integer idUser) {
+        return new ResponseEntity<>(userService.disabledUser(idUser), HttpStatus.OK);
     }
 }
