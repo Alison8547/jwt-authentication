@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Create Account</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+<h1>Create Account</h1>
+
+<div>
+  <label for="email">Email:</label>
+  <input type="text" id="email" name="email">
+</div>
+
+<div>
+  <label for="password">Senha:</label>
+  <input type="password" id="password" name="password">
+</div>
+
+<div>
+  <label for="cargos">List cargos:</label>
+  <input type="text" id="cargos" name="cargos">
+</div>
+
+<button id="send">Send</button>
+
+<div id="result"></div>
+
+<script>
+  $(document).ready(function() {
+    $("#send").click(function() {
+      let email = $("#email").val();
+      let password = $("#password").val();
+      let cargos = $("#cargos").val().split(",").map(function(item) {
+        return parseInt(item.trim());
+      });
+
+      const dados = {
+        email: email,
+        password: password,
+        cargos: cargos
+      };
+
+      $.ajax({
+        type: "POST",
+        url: "http://localhost:8080/create-user",
+        data: JSON.stringify(dados),
+        contentType: "application/json",
+        success: function(response) {
+          $("#result").html("Response server: " + JSON.stringify(response));
+        },
+        error: function(error) {
+          $("#result").html("Error request: " + error.statusText);
+        }
+      });
+    });
+  });
+</script>
+</body>
+</html>
+
+
